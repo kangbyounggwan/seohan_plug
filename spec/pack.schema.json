@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factor.io.kr/schemas/ontology-pack-1.0.json",
+  "title": "Factor MES Ontology Pack (T1 data)",
+  "description": "ontology type 플러그인의 데이터 본문. 회사/업종 고유 온톨로지 overlay. 커널은 이 데이터를 adapter_type 으로 호출해 merge.",
+  "type": "object",
+  "required": ["adapter_type", "entities", "edges"],
+  "additionalProperties": true,
+  "properties": {
+    "pack": { "type": "string", "description": "팩 이름(예: seohan-ontology)" },
+    "company_id": { "type": "string" },
+    "adapter_type": { "type": "string", "pattern": "^[a-z0-9_]+$", "description": "매니페스트 adapter_type 과 일치해야 함" },
+    "tier": { "type": "string", "description": "경계 설명(company-overlay + industry + adapter)" },
+    "entities": {
+      "type": "object",
+      "description": "엔티티 사전. 각 엔티티는 vars{name:{role,dtype,volatility,sample,source}} 보유.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "vars": { "type": "object" }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "description": "typed 엣지. hasChild/produces/hasMeasure/hasEvent/hasCause/precedes 등.",
+      "items": {
+        "type": "object",
+        "required": ["src", "dst", "type"],
+        "properties": {
+          "src": { "type": "string" },
+          "dst": { "type": "string" },
+          "type": { "type": "string" },
+          "scope": { "type": "string" },
+          "props": { "type": "object" }
+        }
+      }
+    },
+    "concepts": { "type": "array", "description": "AAS concept 사전(업종/회사 고유 개념)" },
+    "station_types": { "type": "array" },
+    "alarm_types": { "type": "array" },
+    "line_routes": { "type": "array" },
+    "node_call_plan": { "type": "object", "description": "노드별 API 호출주기(realtime/event/static)" }
+  }
+}

@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# 빌드 산출물
+dist/
+*.fpkg
+
+# 환경
+.venv/
+.env

@@ -1,0 +1,4571 @@
+{
+  "pack": "seohan-ontology",
+  "company_id": "133d7286-33ab-4056-aca4-0287b7e22d05",
+  "adapter_type": "seohan",
+  "tier": "company-overlay + industry(metal-machining) + adapter(seohan-mes)",
+  "note": "company-overlay only — kernel(공용) 미포함. company_id 로 호출(로드)해서만 사용.",
+  "generated_from": [
+    "seohan_api_probe.json",
+    "seohan_pack.json"
+  ],
+  "counts": {
+    "entities": 7,
+    "edges": 194,
+    "edges_by_type": {
+      "hasChild": 169,
+      "produces": 1,
+      "hasMeasure": 5,
+      "hasEvent": 1,
+      "hasCause": 12,
+      "precedes": 6
+    },
+    "concepts": 9,
+    "factories": 3,
+    "lines": 84,
+    "stations": 252,
+    "zones": 47
+  },
+  "entities": {
+    "plant": {
+      "vars": {
+        "plantUid": {
+          "role": "identifier",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "SEOHAN-PL001",
+          "source": "get_plants"
+        },
+        "plantAddr": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "충북 진천군 덕산읍 신척산단 4로 29",
+          "source": "get_plants"
+        },
+        "plantNm": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "3공장 A동",
+          "source": "get_plants"
+        },
+        "sortSeq": {
+          "role": "attribute",
+          "dtype": "int",
+          "volatility": "static",
+          "sample": 1,
+          "source": "get_plants"
+        },
+        "isUsed": {
+          "role": "flag",
+          "dtype": "int",
+          "volatility": "static",
+          "sample": 1,
+          "source": "get_plants"
+        },
+        "wrtDt": {
+          "role": "timestamp",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "2025-03-11T19:24:08",
+          "source": "get_plants"
+        },
+        "wrtUsr": {
+          "role": "attribute",
+          "dtype": "null",
+          "volatility": "static",
+          "sample": null,
+          "source": "get_plants"
+        },
+        "compUid": {
+          "role": "identifier",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "SEOHAN",
+          "source": "get_plants"
+        },
+        "isDefault": {
+          "role": "flag",
+          "dtype": "int",
+          "volatility": "static",
+          "sample": 0,
+          "source": "get_plants"
+        }
+      }
+    },
+    "line": {
+      "vars": {
+        "lineId": {
+          "role": "identifier",
+          "dtype": "int",
+          "volatility": "static",
+          "sample": 1,
+          "source": "get_lines"
+        },
+        "sortSeq": {
+          "role": "attribute",
+          "dtype": "int",
+          "volatility": "static",
+          "sample": 22,
+          "source": "get_lines"
+        },
+        "lineNm": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "P43E",
+          "source": "get_lines"
+        },
+        "lineAlias": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "P43E",
+          "source": "get_lines"
+        },
+        "isUsed": {
+          "role": "flag",
+          "dtype": "bool",
+          "volatility": "static",
+          "sample": true,
+          "source": "get_lines"
+        },
+        "lineType": {
+          "role": "status",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "ASSEMBLY",
+          "source": "get_lines"
+        },
+        "lineMonitoringType": {
+          "role": "status",
+          "dtype": "null",
+          "volatility": "static",
+          "sample": null,
+          "source": "get_lines"
+        },
+        "isDataValidationRequired": {
+          "role": "flag",
+          "dtype": "bool",
+          "volatility": "static",
+          "sample": false,
+          "source": "get_lines"
+        },
+        "productionQty": {
+          "role": "measure",
+          "dtype": "int",
+          "volatility": "realtime",
+          "sample": 21231,
+          "source": "get_line_operations"
+        },
+        "targetQty": {
+          "role": "measure",
+          "dtype": "int",
+          "volatility": "realtime",
+          "sample": 37800,
+          "source": "get_line_operations"
+        },
+        "realTargetQty": {
+          "role": "measure",
+          "dtype": "int",
+          "volatility": "realtime",
+          "sample": 20373,
+          "source": "get_line_operations"
+        },
+        "avgCycleTime": {
+          "role": "measure",
+          "dtype": "float",
+          "volatility": "realtime",
+          "sample": 30.0,
+          "source": "get_line_operations"
+        },
+        "inputTime": {
+          "role": "measure",
+          "dtype": "int",
+          "volatility": "realtime",
+          "sample": 377999,
+          "source": "get_line_operations"
+        },
+        "operationTime": {
+          "role": "measure",
+          "dtype": "int",
+          "volatility": "realtime",
+          "sample": 222592,
+          "source": "get_line_operations"
+        },
+        "realOperationTime": {
+          "role": "measure",
+          "dtype": "int",
+          "volatility": "realtime",
+          "sample": 636930,
+          "source": "get_line_operations"
+        },
+        "totalEfficiency": {
+          "role": "measure",
+          "dtype": "float",
+          "volatility": "realtime",
+          "sample": 33.1,
+          "source": "get_line_operations"
+        },
+        "timeEfficiency": {
+          "role": "measure",
+          "dtype": "float",
+          "volatility": "realtime",
+          "sample": 58.9,
+          "source": "get_line_operations"
+        },
+        "performanceEfficiency": {
+          "role": "measure",
+          "dtype": "float",
+          "volatility": "realtime",
+          "sample": 56.2,
+          "source": "get_line_operations"
+        },
+        "qualityEfficiency": {
+          "role": "measure",
+          "dtype": "float",
+          "volatility": "realtime",
+          "sample": 100.0,
+          "source": "get_line_operations"
+        },
+        "noWorkTime": {
+          "role": "measure",
+          "dtype": "int",
+          "volatility": "realtime",
+          "sample": 230666,
+          "source": "get_line_operations"
+        },
+        "stopTime": {
+          "role": "measure",
+          "dtype": "int",
+          "volatility": "realtime",
+          "sample": 10671,
+          "source": "get_line_operations"
+        },
+        "maintTime": {
+          "role": "measure",
+          "dtype": "int",
+          "volatility": "realtime",
+          "sample": 0,
+          "source": "get_line_operations"
+        },
+        "lossTime": {
+          "role": "measure",
+          "dtype": "int",
+          "volatility": "realtime",
+          "sample": 0,
+          "source": "get_line_operations"
+        },
+        "systemTime": {
+          "role": "measure",
+          "dtype": "int",
+          "volatility": "realtime",
+          "sample": 0,
+          "source": "get_line_operations"
+        },
+        "totalDowntimeTime": {
+          "role": "measure",
+          "dtype": "int",
+          "volatility": "realtime",
+          "sample": 155407,
+          "source": "get_line_operations"
+        },
+        "unkDtTime": {
+          "role": "measure",
+          "dtype": "int",
+          "volatility": "realtime",
+          "sample": 140503,
+          "source": "get_line_operations"
+        },
+        "almDtTime": {
+          "role": "measure",
+          "dtype": "int",
+          "volatility": "realtime",
+          "sample": 4233,
+          "source": "get_line_operations"
+        },
+        "targetQtyDaily": {
+          "role": "measure",
+          "dtype": "int",
+          "volatility": "realtime",
+          "sample": 37800,
+          "source": "get_line_operations"
+        }
+      }
+    },
+    "product": {
+      "vars": {
+        "id": {
+          "role": "measure",
+          "dtype": "int",
+          "volatility": "static",
+          "sample": 0,
+          "source": "get_line_products"
+        },
+        "prodUid": {
+          "role": "identifier",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "DEFAULT",
+          "source": "get_line_products"
+        },
+        "prodNo": {
+          "role": "identifier",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "-",
+          "source": "get_line_products"
+        },
+        "prodNm": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "DEFAULT",
+          "source": "get_line_products"
+        },
+        "targetUph": {
+          "role": "measure",
+          "dtype": "float",
+          "volatility": "static",
+          "sample": 360.0,
+          "source": "get_line_products"
+        },
+        "name": {
+          "role": "attribute",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "가공-외륜 열처리",
+          "source": "get_product_tree"
+        },
+        "children": {
+          "role": "nested",
+          "dtype": "list",
+          "volatility": "static",
+          "sample": [
+            {
+              "id": "SEOHAN-P00034",
+              "name": "P10006230",
+              "children": [],
+              "meta": {
+                "prodNo": "P10006230",
+                "prodUid": "SEOHAN-P00034",
+                "prodNm": "JT MONO"
+              }
+            },
+            {
+              "id": "SEOHAN-P00013",
+              "name": "P10016503",
+              "children": [],
+              "meta": {
+                "prodNo": "P10016503",
+                "prodUid": "SEOHAN-P00013",
+                "prodNm": "JL CJ 외륜 (열처리)"
+              }
+            },
+            {
+              "id": "SEOHAN-P00014",
+              "name": "P10356705",
+              "children": [],
+              "meta": {
+                "prodNo": "P10356705",
+                "prodUid": "SEOHAN-P00014",
+                "prodNm": "Disc 4600 외륜 열처리 (JL/JT 26MY)  "
+              }
+            },
+            {
+              "id": "SEOHAN-P00016",
+              "name": "P10420490",
+              "children": [],
+              "meta": {
+                "prodNo": "P10420490",
+                "prodUid": "SEOHAN-P00016",
+                "prodNm": "GNOME Mono 외륜 열처리"
+              }
+            },
+            {
+              "id": "SEOHAN-P00196",
+              "name": "P3221400001",
+              "children": [],
+              "meta": {
+                "prodNo": "P3221400001",
+                "prodUid": "SEOHAN-P00196",
+                "prodNm": "ASTEMO MDX"
+              }
+            },
+            {
+              "id": "SEOHAN-P00194",
+              "name": "P3321400010 ",
+              "children": [],
+              "meta": {
+                "prodNo": "P3321400010 ",
+                "prodUid": "SEOHAN-P00194",
+                "prodNm": "NX4 NQ5 Center CJ1500M 외륜 열후    "
+              }
+            },
+            {
+              "id": "SEOHAN-P00031",
+              "name": "P3321400011",
+              "children": [],
+              "meta": {
+                "prodNo": "P3321400011",
+                "prodUid": "SEOHAN-P00031",
+                "prodNm": "NX4 NQ5 Rear CJ1500F 외륜 열후"
+              }
+            },
+            {
+              "id": "SEOHAN-P00017",
+              "name": "P3321400014",
+              "children": [],
+              "meta": {
+                "prodNo": "P3321400014",
+                "prodUid": "SEOHAN-P00017",
+                "prodNm": "NQ5 CJ1500 외륜 열처리"
+              }
+            }
+          ],
+          "source": "get_product_tree"
+        },
+        "meta": {
+          "role": "nested",
+          "dtype": "dict",
+          "volatility": "static",
+          "sample": {
+            "prodCatDes": "가공-외륜 열처리",
+            "prodCatUid": "SEOHAN-PC0004"
+          },
+          "source": "get_product_tree"
+        }
+      }
+    },
+    "group": {
+      "vars": {
+        "groupId": {
+          "role": "identifier",
+          "dtype": "int",
+          "volatility": "static",
+          "sample": 115,
+          "source": "get_groups"
+        },
+        "sortSeq": {
+          "role": "attribute",
+          "dtype": "int",
+          "volatility": "static",
+          "sample": 1,
+          "source": "get_groups"
+        },
+        "groupNm": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "99",
+          "source": "get_groups"
+        },
+        "groupAlias": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "자동조립",
+          "source": "get_groups"
+        },
+        "isUsed": {
+          "role": "flag",
+          "dtype": "bool",
+          "volatility": "static",
+          "sample": true,
+          "source": "get_groups"
+        }
+      }
+    },
+    "station": {
+      "vars": {
+        "clientName": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "P43B/C/E-PLC",
+          "source": "get_stations"
+        },
+        "stnCatDes": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "Assembly",
+          "source": "get_stations"
+        },
+        "stnUid": {
+          "role": "identifier",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "SEOHAN-PL002-S00126",
+          "source": "get_stations"
+        },
+        "stnId": {
+          "role": "identifier",
+          "dtype": "null",
+          "volatility": "static",
+          "sample": null,
+          "source": "get_stations"
+        },
+        "stnNm": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "CJKIT자동조립1",
+          "source": "get_stations"
+        },
+        "stnAlias": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "CJKIT자동조립",
+          "source": "get_stations"
+        },
+        "isUsed": {
+          "role": "flag",
+          "dtype": "bool",
+          "volatility": "static",
+          "sample": true,
+          "source": "get_stations"
+        },
+        "model": {
+          "role": "label",
+          "dtype": "null",
+          "volatility": "static",
+          "sample": null,
+          "source": "get_stations"
+        },
+        "originId": {
+          "role": "identifier",
+          "dtype": "null",
+          "volatility": "static",
+          "sample": null,
+          "source": "get_stations"
+        },
+        "supplier": {
+          "role": "attribute",
+          "dtype": "null",
+          "volatility": "static",
+          "sample": null,
+          "source": "get_stations"
+        },
+        "stnSpec": {
+          "role": "attribute",
+          "dtype": "null",
+          "volatility": "static",
+          "sample": null,
+          "source": "get_stations"
+        },
+        "contact": {
+          "role": "label",
+          "dtype": "null",
+          "volatility": "static",
+          "sample": null,
+          "source": "get_stations"
+        },
+        "installDt": {
+          "role": "timestamp",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "2025-03-22T00:11:34",
+          "source": "get_stations"
+        },
+        "remark": {
+          "role": "attribute",
+          "dtype": "null",
+          "volatility": "static",
+          "sample": null,
+          "source": "get_stations"
+        },
+        "plantNm": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "3공장 C동",
+          "source": "get_stations"
+        },
+        "lineNm": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "P43E",
+          "source": "get_stations"
+        },
+        "ncpComment": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "realtime",
+          "sample": "noname",
+          "source": "get_station_status.stationList"
+        },
+        "machineStatusType": {
+          "role": "status",
+          "dtype": "str",
+          "volatility": "realtime",
+          "sample": "RUN",
+          "source": "get_station_status.stationList"
+        },
+        "operationRate": {
+          "role": "measure",
+          "dtype": "float",
+          "volatility": "realtime",
+          "sample": 0.0,
+          "source": "get_station_status.stationList"
+        },
+        "currentQty": {
+          "role": "measure",
+          "dtype": "int",
+          "volatility": "realtime",
+          "sample": 0,
+          "source": "get_station_status.stationList"
+        }
+      }
+    },
+    "measure": {
+      "vars": {
+        "stnUid": {
+          "role": "identifier",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "SEOHAN-PL002-S00126",
+          "source": "get_products_base_ct"
+        },
+        "stnNm": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "CJKIT자동조립1",
+          "source": "get_products_base_ct"
+        },
+        "prodNo": {
+          "role": "identifier",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "G10016529(1)",
+          "source": "get_products_base_ct"
+        },
+        "prodNm": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "JL CJ Kit Grade (1등급)",
+          "source": "get_products_base_ct"
+        },
+        "stnProdUid": {
+          "role": "identifier",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "SEOHAN-PL002-S00126-SP0003",
+          "source": "get_products_base_ct"
+        },
+        "ncpComment": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "static",
+          "sample": "(0) noname",
+          "source": "get_products_base_ct"
+        },
+        "baseValue": {
+          "role": "measure",
+          "dtype": "float",
+          "volatility": "static",
+          "sample": 30.0,
+          "source": "get_products_base_ct"
+        }
+      }
+    },
+    "alarm": {
+      "vars": {
+        "alarmId": {
+          "role": "identifier",
+          "dtype": "int",
+          "volatility": "event",
+          "sample": 4725,
+          "source": "get_alarm_list"
+        },
+        "type": {
+          "role": "attribute",
+          "dtype": "str",
+          "volatility": "event",
+          "sample": "pmcAlarm",
+          "source": "get_alarm_list"
+        },
+        "message": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "event",
+          "sample": " SPINDLE ROTATE NOT ARM HOME POSIOTION -…",
+          "source": "get_alarm_list"
+        },
+        "alarmCategoryName": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "event",
+          "sample": "미분류",
+          "source": "get_alarm_list"
+        },
+        "alarmGroupName": {
+          "role": "label",
+          "dtype": "str",
+          "volatility": "event",
+          "sample": "미분류",
+          "source": "get_alarm_list"
+        },
+        "wrtDt": {
+          "role": "timestamp",
+          "dtype": "str",
+          "volatility": "event",
+          "sample": "2026-06-01 15:48:50.0",
+          "source": "get_alarm_list"
+        }
+      }
+    }
+  },
+  "edges": [
+    {
+      "src": "plant",
+      "dst": "line",
+      "type": "hasChild",
+      "scope": "schema"
+    },
+    {
+      "src": "line",
+      "dst": "group",
+      "type": "hasChild",
+      "scope": "schema"
+    },
+    {
+      "src": "line",
+      "dst": "station",
+      "type": "hasChild",
+      "scope": "schema"
+    },
+    {
+      "src": "station",
+      "dst": "sub_station",
+      "type": "hasChild",
+      "scope": "schema"
+    },
+    {
+      "src": "line",
+      "dst": "product",
+      "type": "produces",
+      "scope": "schema"
+    },
+    {
+      "src": "station",
+      "dst": "measure",
+      "type": "hasMeasure",
+      "scope": "schema"
+    },
+    {
+      "src": "station",
+      "dst": "alarm",
+      "type": "hasEvent",
+      "scope": "schema"
+    },
+    {
+      "src": "P13G",
+      "dst": "UtilizationRate",
+      "type": "hasMeasure",
+      "scope": "instance"
+    },
+    {
+      "src": "P13G",
+      "dst": "OEE",
+      "type": "hasMeasure",
+      "scope": "instance"
+    },
+    {
+      "src": "P13G",
+      "dst": "Performance",
+      "type": "hasMeasure",
+      "scope": "instance"
+    },
+    {
+      "src": "P13G",
+      "dst": "Availability",
+      "type": "hasMeasure",
+      "scope": "instance"
+    },
+    {
+      "src": "Performance",
+      "dst": "tool_wear",
+      "type": "hasCause",
+      "scope": "instance",
+      "props": {
+        "weight": 0.8
+      }
+    },
+    {
+      "src": "Performance",
+      "dst": "speed_setting",
+      "type": "hasCause",
+      "scope": "instance",
+      "props": {
+        "weight": 0.5
+      }
+    },
+    {
+      "src": "Performance",
+      "dst": "parts_defect",
+      "type": "hasCause",
+      "scope": "instance",
+      "props": {
+        "weight": 0.4
+      }
+    },
+    {
+      "src": "Availability",
+      "dst": "AlarmEvent",
+      "type": "hasCause",
+      "scope": "instance",
+      "props": {
+        "weight": 0.7
+      }
+    },
+    {
+      "src": "SEOHAN-PL002-S00013",
+      "dst": "cause:clamp_failure",
+      "type": "hasCause",
+      "scope": "instance",
+      "props": {
+        "category": "mechanical"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002-S00013",
+      "dst": "cause:pneumatic_actuator_failure",
+      "type": "hasCause",
+      "scope": "instance",
+      "props": {
+        "category": "pneumatic"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002-S00014",
+      "dst": "cause:clamp_failure",
+      "type": "hasCause",
+      "scope": "instance",
+      "props": {
+        "category": "mechanical"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002-S00014",
+      "dst": "cause:pneumatic_actuator_failure",
+      "type": "hasCause",
+      "scope": "instance",
+      "props": {
+        "category": "pneumatic"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002-S00111",
+      "dst": "cause:door_interlock_failure",
+      "type": "hasCause",
+      "scope": "instance",
+      "props": {
+        "category": "safety"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002-S00015",
+      "dst": "cause:loader_failure",
+      "type": "hasCause",
+      "scope": "instance",
+      "props": {
+        "category": "automation"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002-S00015",
+      "dst": "cause:conveyor_jam",
+      "type": "hasCause",
+      "scope": "instance",
+      "props": {
+        "category": "mechanical"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002-S00015",
+      "dst": "cause:sensor_drift",
+      "type": "hasCause",
+      "scope": "instance",
+      "props": {
+        "category": "sensor"
+      }
+    },
+    {
+      "src": "SEOHAN",
+      "dst": "SEOHAN-PL004",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "addr": "충북 진천군 덕산읍 인석로 95-13",
+        "name": "1공장",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "plant"
+      }
+    },
+    {
+      "src": "SEOHAN",
+      "dst": "SEOHAN-PL002",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "addr": "충북 진천군 덕산읍 신척산단 4로 29",
+        "name": "3공장 C동",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "plant"
+      }
+    },
+    {
+      "src": "SEOHAN",
+      "dst": "SEOHAN-PL001",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "addr": "충북 진천군 덕산읍 신척산단 4로 29",
+        "name": "3공장 A동",
+        "plant_uid": "SEOHAN-PL001",
+        "target_type": "plant"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "R03",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "R03",
+        "line_id": 45,
+        "line_nm": "R03",
+        "plant_nm": "1공장",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "R02",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "R02",
+        "line_id": 46,
+        "line_nm": "R02",
+        "plant_nm": "1공장",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "F12A",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "F12A",
+        "line_id": 47,
+        "line_nm": "F12A",
+        "plant_nm": "1공장",
+        "line_type": "PROCESSING",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "F11B",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "F11B",
+        "line_id": 48,
+        "line_nm": "F11B",
+        "plant_nm": "1공장",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "F42",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "F42",
+        "line_id": 49,
+        "line_nm": "F42",
+        "plant_nm": "1공장",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "F54B",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "F54B",
+        "line_id": 50,
+        "line_nm": "F54B",
+        "plant_nm": "1공장",
+        "line_type": "PROCESSING",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "F54A",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "F54A",
+        "line_id": 51,
+        "line_nm": "F54A",
+        "plant_nm": "1공장",
+        "line_type": "PROCESSING",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "P12G",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P12G",
+        "line_id": 6,
+        "line_nm": "P12G",
+        "plant_nm": "3공장 C동",
+        "line_type": "PROCESSING",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "P13C",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P13C",
+        "line_id": 7,
+        "line_nm": "P13C",
+        "plant_nm": "3공장 C동",
+        "line_type": "PROCESSING",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "P13D",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P13D",
+        "line_id": 8,
+        "line_nm": "P13D",
+        "plant_nm": "3공장 C동",
+        "line_type": "PROCESSING",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "P13E",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P13E",
+        "line_id": 9,
+        "line_nm": "P13E",
+        "plant_nm": "3공장 C동",
+        "line_type": "PROCESSING",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "P13F",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P13F",
+        "line_id": 10,
+        "line_nm": "P13F",
+        "plant_nm": "3공장 C동",
+        "line_type": "PROCESSING",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "P13G",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P13G",
+        "line_id": 11,
+        "line_nm": "P13G",
+        "plant_nm": "3공장 C동",
+        "line_type": "PROCESSING",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "P14D",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P14D",
+        "line_id": 12,
+        "line_nm": "P14D",
+        "plant_nm": "3공장 C동",
+        "line_type": "PROCESSING",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "P14E",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P14E",
+        "line_id": 13,
+        "line_nm": "P14E",
+        "plant_nm": "3공장 C동",
+        "line_type": "PROCESSING",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "P03",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P03",
+        "line_id": 14,
+        "line_nm": "P03",
+        "plant_nm": "3공장 C동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "P04",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P04",
+        "line_id": 15,
+        "line_nm": "P04",
+        "plant_nm": "3공장 C동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "P06",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P06",
+        "line_id": 16,
+        "line_nm": "P06",
+        "plant_nm": "3공장 C동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "P07",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P07",
+        "line_id": 17,
+        "line_nm": "P07",
+        "plant_nm": "3공장 C동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "P42B",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P42B",
+        "line_id": 18,
+        "line_nm": "P42B",
+        "plant_nm": "3공장 C동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "P42C",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P42C",
+        "line_id": 19,
+        "line_nm": "P42C",
+        "plant_nm": "3공장 C동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "P43A",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P43A",
+        "line_id": 20,
+        "line_nm": "P43A",
+        "plant_nm": "3공장 C동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "P43B",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P43B",
+        "line_id": 21,
+        "line_nm": "P43B",
+        "plant_nm": "3공장 C동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "P43C",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P43C",
+        "line_id": 22,
+        "line_nm": "P43C",
+        "plant_nm": "3공장 C동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL001",
+      "dst": "C43A",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "C43A",
+        "line_id": 28,
+        "line_nm": "C43A",
+        "plant_nm": "3공장 A동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL001",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL001",
+      "dst": "P42",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P42",
+        "line_id": 29,
+        "line_nm": "P42",
+        "plant_nm": "3공장 A동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL001",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL001",
+      "dst": "P41D",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P41D",
+        "line_id": 30,
+        "line_nm": "P41D",
+        "plant_nm": "3공장 A동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL001",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL001",
+      "dst": "P41B",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P41B",
+        "line_id": 31,
+        "line_nm": "P41B",
+        "plant_nm": "3공장 A동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL001",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL001",
+      "dst": "P41A",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P41A",
+        "line_id": 32,
+        "line_nm": "P41A",
+        "plant_nm": "3공장 A동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL001",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL001",
+      "dst": "P41",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P41",
+        "line_id": 33,
+        "line_nm": "P41",
+        "plant_nm": "3공장 A동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL001",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL001",
+      "dst": "P05",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P05",
+        "line_id": 34,
+        "line_nm": "P05",
+        "plant_nm": "3공장 A동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL001",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL001",
+      "dst": "P02",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P02",
+        "line_id": 35,
+        "line_nm": "P02",
+        "plant_nm": "3공장 A동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL001",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "SEOHAN-PL001",
+      "dst": "P01",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "alias": "P01",
+        "line_id": 36,
+        "line_nm": "P01",
+        "plant_nm": "3공장 A동",
+        "line_type": "ASSEMBLY",
+        "plant_uid": "SEOHAN-PL001",
+        "target_type": "line"
+      }
+    },
+    {
+      "src": "R03",
+      "dst": "SEOHAN-PL004-S00051",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "R03-05-FProof 2차 검사",
+        "model": "fanuc",
+        "aliases": [
+          "R03-05-FProof 2차 검사",
+          "FProof 2차 검사",
+          "R03-PLC"
+        ],
+        "line_nm": "R03",
+        "stn_uid": "SEOHAN-PL004-S00051",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "F11B",
+      "dst": "SEOHAN-PL004-S00052",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "CARRIER ASS'Y",
+        "model": "fanuc",
+        "aliases": [
+          "CARRIER ASS'Y",
+          "CARRIER ASS'Y",
+          "F11B-PLC"
+        ],
+        "line_nm": "F11B",
+        "stn_uid": "SEOHAN-PL004-S00052",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00053",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F17A-GANTRY OP10",
+        "model": "fanuc",
+        "aliases": [
+          "F17A-GANTRY OP10",
+          "F17A-GANTRY OP10",
+          "F17A-PLC"
+        ],
+        "line_nm": "F17A",
+        "stn_uid": "SEOHAN-PL004-S00053",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00054",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F17A-GANTRY OP20",
+        "model": "fanuc",
+        "aliases": [
+          "F17A-GANTRY OP20",
+          "F17A-GANTRY OP20",
+          "F17A-PLC"
+        ],
+        "line_nm": "F17A",
+        "stn_uid": "SEOHAN-PL004-S00054",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00055",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F17A/B-ROBOT",
+        "model": "fanuc",
+        "aliases": [
+          "F17A/B-ROBOT",
+          "F17A/B-ROBOT",
+          "F17A-PLC"
+        ],
+        "line_nm": "F17A",
+        "stn_uid": "SEOHAN-PL004-S00055",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00056",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F17A/B-마킹기",
+        "model": "fanuc",
+        "aliases": [
+          "F17A/B-마킹기",
+          "F17A/B-마킹기",
+          "F17A-PLC"
+        ],
+        "line_nm": null,
+        "stn_uid": "SEOHAN-PL004-S00056",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00057",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F17A/B-소켓압입",
+        "model": "fanuc",
+        "aliases": [
+          "F17A/B-소켓압입",
+          "F17A/B-소켓압입",
+          "F17A-PLC"
+        ],
+        "line_nm": "F17A",
+        "stn_uid": "SEOHAN-PL004-S00057",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00058",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F54A-소켓압입",
+        "model": "fanuc",
+        "aliases": [
+          "F54A-소켓압입",
+          "F54A-소켓압입",
+          "F18A-PLC"
+        ],
+        "line_nm": null,
+        "stn_uid": "SEOHAN-PL004-S00058",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00059",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F18A/B-소켓압입",
+        "model": "fanuc",
+        "aliases": [
+          "F18A/B-소켓압입",
+          "F18A/B-소켓압입",
+          "F18A-PLC"
+        ],
+        "line_nm": null,
+        "stn_uid": "SEOHAN-PL004-S00059",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00060",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F18A/B-ROBOT",
+        "model": "fanuc",
+        "aliases": [
+          "F18A/B-ROBOT",
+          "F18A/B-ROBOT",
+          "F18A-PLC"
+        ],
+        "line_nm": "F18",
+        "stn_uid": "SEOHAN-PL004-S00060",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "F54A",
+      "dst": "SEOHAN-PL004-S00061",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F54A-소켓압입",
+        "model": "fanuc",
+        "aliases": [
+          "F54A-소켓압입",
+          "F54A-소켓압입",
+          "F54A-PLC"
+        ],
+        "line_nm": "F54A",
+        "stn_uid": "SEOHAN-PL004-S00061",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00062",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F54A/B-ROBOT",
+        "model": "fanuc",
+        "aliases": [
+          "F54A/B-ROBOT",
+          "F54A/B-ROBOT",
+          "F54A-PLC"
+        ],
+        "line_nm": null,
+        "stn_uid": "SEOHAN-PL004-S00062",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "F54B",
+      "dst": "SEOHAN-PL004-S00063",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F54B-소켓압입",
+        "model": "fanuc",
+        "aliases": [
+          "F54B-소켓압입",
+          "F54B-소켓압입",
+          "F54B-PLC"
+        ],
+        "line_nm": "F54B",
+        "stn_uid": "SEOHAN-PL004-S00063",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00064",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F55A-소켓압입",
+        "model": "fanuc",
+        "aliases": [
+          "F55A-소켓압입",
+          "F55A-소켓압입",
+          "F55A-PLC"
+        ],
+        "line_nm": null,
+        "stn_uid": "SEOHAN-PL004-S00064",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00065",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F55A/B-ROBOT",
+        "model": "fanuc",
+        "aliases": [
+          "F55A/B-ROBOT",
+          "F55A/B-ROBOT",
+          "F55A-PLC"
+        ],
+        "line_nm": null,
+        "stn_uid": "SEOHAN-PL004-S00065",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "R02",
+      "dst": "SEOHAN-PL004-S00066",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "R02-01-W/Bearing Disc 조립",
+        "model": "fanuc",
+        "aliases": [
+          "R02-01-W/Bearing Disc 조립",
+          "R02-01-W/Bearing Disc 조립",
+          "R02-PLC"
+        ],
+        "line_nm": "R02",
+        "stn_uid": "SEOHAN-PL004-S00066",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "R02",
+      "dst": "SEOHAN-PL004-S00067",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "R02-02-4-Hole Bolt 가체결",
+        "model": "fanuc",
+        "aliases": [
+          "R02-02-4-Hole Bolt 가체결",
+          "R02-02-4-Hole Bolt 가체결",
+          "R02-PLC"
+        ],
+        "line_nm": "R02",
+        "stn_uid": "SEOHAN-PL004-S00067",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "R02",
+      "dst": "SEOHAN-PL004-S00068",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "R02-03-4-Hole Bolt 정체결",
+        "model": "fanuc",
+        "aliases": [
+          "R02-03-4-Hole Bolt 정체결",
+          "R02-03-4-Hole Bolt 정체결",
+          "R02-PLC"
+        ],
+        "line_nm": "R02",
+        "stn_uid": "SEOHAN-PL004-S00068",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "R02",
+      "dst": "SEOHAN-PL004-S00069",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "R02-04-4-Hole Bolt 높이검사",
+        "model": "fanuc",
+        "aliases": [
+          "R02-04-4-Hole Bolt 높이검사",
+          "R02-04-4-Hole Bolt 높이검사",
+          "R02-PLC"
+        ],
+        "line_nm": "R02",
+        "stn_uid": "SEOHAN-PL004-S00069",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "R02",
+      "dst": "SEOHAN-PL004-S00070",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "R02-05-R/Out 측정",
+        "model": "fanuc",
+        "aliases": [
+          "R02-05-R/Out 측정",
+          "R02-05-R/Out 측정",
+          "R02-PLC"
+        ],
+        "line_nm": "R02",
+        "stn_uid": "SEOHAN-PL004-S00070",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00071",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "R04-01-#10-OP30 Main",
+        "model": "fanuc",
+        "aliases": [
+          "R04-01-#10-OP30 Main",
+          "R04-01-#10-OP30 Main",
+          "R04-PLC"
+        ],
+        "line_nm": "R04",
+        "stn_uid": "SEOHAN-PL004-S00071",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00072",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "R04-02-#10-OP20 Main",
+        "model": "fanuc",
+        "aliases": [
+          "R04-02-#10-OP20 Main",
+          "R04-02-#10-OP20 Main",
+          "R04-PLC"
+        ],
+        "line_nm": "R04",
+        "stn_uid": "SEOHAN-PL004-S00072",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00073",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "R04-03-#10-OP10 Main",
+        "model": "fanuc",
+        "aliases": [
+          "R04-03-#10-OP10 Main",
+          "R04-03-#10-OP10 Main",
+          "R04-PLC"
+        ],
+        "line_nm": "R04",
+        "stn_uid": "SEOHAN-PL004-S00073",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00074",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "R04-04-#20-OP10 Main",
+        "model": "fanuc",
+        "aliases": [
+          "R04-04-#20-OP10 Main",
+          "R04-04-#20-OP10 Main",
+          "R04-PLC"
+        ],
+        "line_nm": "R04",
+        "stn_uid": "SEOHAN-PL004-S00074",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00075",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "R04-05-#20-OP20 Main",
+        "model": "fanuc",
+        "aliases": [
+          "R04-05-#20-OP20 Main",
+          "R04-05-#20-OP20 Main",
+          "R04-PLC"
+        ],
+        "line_nm": "R04",
+        "stn_uid": "SEOHAN-PL004-S00075",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00076",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "Marpos측정",
+        "model": "fanuc",
+        "aliases": [
+          "Marpos측정",
+          "Marpos측정",
+          "F17A-PLC"
+        ],
+        "line_nm": "F17A",
+        "stn_uid": "SEOHAN-PL004-S00076",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00077",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "갠튜리3",
+        "model": "fanuc",
+        "aliases": [
+          "갠튜리3",
+          "갠튜리3",
+          "F17A-PLC"
+        ],
+        "line_nm": "F17A",
+        "stn_uid": "SEOHAN-PL004-S00077",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00078",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F18A-압입",
+        "model": "fanuc",
+        "aliases": [
+          "F18A-압입",
+          "F18A-압입",
+          "F18A-PLC"
+        ],
+        "line_nm": "F18",
+        "stn_uid": "SEOHAN-PL004-S00078",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "F54A",
+      "dst": "SEOHAN-PL004-S00079",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F54A-갠튜리1",
+        "model": "fanuc",
+        "aliases": [
+          "F54A-갠튜리1",
+          "F54A-갠튜리1",
+          "F54A-PLC"
+        ],
+        "line_nm": "F54A",
+        "stn_uid": "SEOHAN-PL004-S00079",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "F54A",
+      "dst": "SEOHAN-PL004-S00080",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F54A-갠튜리2",
+        "model": "fanuc",
+        "aliases": [
+          "F54A-갠튜리2",
+          "F54A-갠튜리2",
+          "F54A-PLC"
+        ],
+        "line_nm": "F54A",
+        "stn_uid": "SEOHAN-PL004-S00080",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "F54A",
+      "dst": "SEOHAN-PL004-S00081",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F54A-갠튜리3",
+        "model": "fanuc",
+        "aliases": [
+          "F54A-갠튜리3",
+          "F54A-갠튜리3",
+          "F54A-PLC"
+        ],
+        "line_nm": "F54A",
+        "stn_uid": "SEOHAN-PL004-S00081",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "F54A",
+      "dst": "SEOHAN-PL004-S00082",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F54A-압입",
+        "model": "fanuc",
+        "aliases": [
+          "F54A-압입",
+          "F54A-압입",
+          "F54A-PLC"
+        ],
+        "line_nm": "F54A",
+        "stn_uid": "SEOHAN-PL004-S00082",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "F54A",
+      "dst": "SEOHAN-PL004-S00083",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F54A-Robot",
+        "model": "fanuc",
+        "aliases": [
+          "F54A-Robot",
+          "F54A-Robot",
+          "F54A-PLC"
+        ],
+        "line_nm": "F54A",
+        "stn_uid": "SEOHAN-PL004-S00083",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "F54B",
+      "dst": "SEOHAN-PL004-S00084",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F54B-Push&Marpos",
+        "model": "fanuc",
+        "aliases": [
+          "F54B-Push&Marpos",
+          "F54B-Push&Marpos",
+          "F54B-PLC"
+        ],
+        "line_nm": "F54B",
+        "stn_uid": "SEOHAN-PL004-S00084",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "F54B",
+      "dst": "SEOHAN-PL004-S00085",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F54B-갠튜리1",
+        "model": "fanuc",
+        "aliases": [
+          "F54B-갠튜리1",
+          "F54B-갠튜리1",
+          "F54B-PLC"
+        ],
+        "line_nm": "F54B",
+        "stn_uid": "SEOHAN-PL004-S00085",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "F54B",
+      "dst": "SEOHAN-PL004-S00086",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F54B-갠튜리2",
+        "model": "fanuc",
+        "aliases": [
+          "F54B-갠튜리2",
+          "F54B-갠튜리2",
+          "F54B-PLC"
+        ],
+        "line_nm": "F54B",
+        "stn_uid": "SEOHAN-PL004-S00086",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "F54B",
+      "dst": "SEOHAN-PL004-S00087",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F54B-갠튜리3",
+        "model": "fanuc",
+        "aliases": [
+          "F54B-갠튜리3",
+          "F54B-갠튜리3",
+          "F54B-PLC"
+        ],
+        "line_nm": "F54B",
+        "stn_uid": "SEOHAN-PL004-S00087",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "F54B",
+      "dst": "SEOHAN-PL004-S00088",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F54B-압입",
+        "model": "fanuc",
+        "aliases": [
+          "F54B-압입",
+          "F54B-압입",
+          "F54B-PLC"
+        ],
+        "line_nm": "F54B",
+        "stn_uid": "SEOHAN-PL004-S00088",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "F54B",
+      "dst": "SEOHAN-PL004-S00089",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F54B-Robot",
+        "model": "fanuc",
+        "aliases": [
+          "F54B-Robot",
+          "F54B-Robot",
+          "F54B-PLC"
+        ],
+        "line_nm": "F54B",
+        "stn_uid": "SEOHAN-PL004-S00089",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00090",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F55A-가공후배출/세척투입",
+        "model": "fanuc",
+        "aliases": [
+          "F55A-가공후배출/세척투입",
+          "F55A-가공후배출/세척투입",
+          "F55A-PLC"
+        ],
+        "line_nm": null,
+        "stn_uid": "SEOHAN-PL004-S00090",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00091",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F55A-압입",
+        "model": "fanuc",
+        "aliases": [
+          "F55A-압입",
+          "F55A-압입",
+          "F55A-PLC"
+        ],
+        "line_nm": "F55",
+        "stn_uid": "SEOHAN-PL004-S00091",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00092",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F55A-Robot",
+        "model": "fanuc",
+        "aliases": [
+          "F55A-Robot",
+          "F55A-Robot",
+          "F55A-PLC"
+        ],
+        "line_nm": "F55",
+        "stn_uid": "SEOHAN-PL004-S00092",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00093",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F55B-가공후배출/측정투입",
+        "model": "fanuc",
+        "aliases": [
+          "F55B-가공후배출/측정투입",
+          "F55B-가공후배출/측정투입",
+          "F55B-PLC"
+        ],
+        "line_nm": null,
+        "stn_uid": "SEOHAN-PL004-S00093",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00094",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F55B-Marpos측정",
+        "model": "fanuc",
+        "aliases": [
+          "F55B-Marpos측정",
+          "F55B-Marpos측정",
+          "F55B-PLC"
+        ],
+        "line_nm": null,
+        "stn_uid": "SEOHAN-PL004-S00094",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00095",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "F55B-가공후배출/세척투입",
+        "model": "fanuc",
+        "aliases": [
+          "F55B-가공후배출/세척투입",
+          "F55B-가공후배출/세척투입",
+          "F55B-PLC"
+        ],
+        "line_nm": null,
+        "stn_uid": "SEOHAN-PL004-S00095",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00096",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "겐튜리-1",
+        "model": null,
+        "aliases": [
+          "겐튜리-1",
+          "겐튜리-1",
+          "F17B-PLC"
+        ],
+        "line_nm": "F17B",
+        "stn_uid": "SEOHAN-PL004-S00096",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00097",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "겐튜리-2",
+        "model": null,
+        "aliases": [
+          "겐튜리-2",
+          "겐튜리-2",
+          "F17B-PLC"
+        ],
+        "line_nm": "F17B",
+        "stn_uid": "SEOHAN-PL004-S00097",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00098",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "겐튜리-3",
+        "model": null,
+        "aliases": [
+          "겐튜리-3",
+          "겐튜리-3",
+          "F17B-PLC"
+        ],
+        "line_nm": "F17B",
+        "stn_uid": "SEOHAN-PL004-S00098",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00099",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "겐튜리-1",
+        "model": null,
+        "aliases": [
+          "겐튜리-1",
+          "겐튜리-1",
+          "F18B"
+        ],
+        "line_nm": null,
+        "stn_uid": "SEOHAN-PL004-S00099",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00100",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "겐튜리-2",
+        "model": null,
+        "aliases": [
+          "겐튜리-2",
+          "겐튜리-2",
+          "F18B"
+        ],
+        "line_nm": null,
+        "stn_uid": "SEOHAN-PL004-S00100",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00101",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "겐츄리-1",
+        "model": null,
+        "aliases": [
+          "겐츄리-1",
+          "겐츄리-1",
+          "F18A-PLC"
+        ],
+        "line_nm": null,
+        "stn_uid": "SEOHAN-PL004-S00101",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL004",
+      "dst": "SEOHAN-PL004-S00102",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "겐츄리-2",
+        "model": null,
+        "aliases": [
+          "겐츄리-2",
+          "겐츄리-2",
+          "F18A-PLC"
+        ],
+        "line_nm": null,
+        "stn_uid": "SEOHAN-PL004-S00102",
+        "plant_uid": "SEOHAN-PL004",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "P03",
+      "dst": "SEOHAN-PL002-S00133",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "종합검사",
+        "model": null,
+        "aliases": [
+          "종합검사",
+          "종합검사",
+          "P03-PLC"
+        ],
+        "line_nm": "P03",
+        "stn_uid": "SEOHAN-PL002-S00133",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Inspection"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00056",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "열처리검사",
+        "model": null,
+        "aliases": [
+          "열처리검사",
+          "열처리검사",
+          "P12C-PLC"
+        ],
+        "line_nm": "P12C",
+        "stn_uid": "SEOHAN-PL002-S00056",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Measurement"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00062",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "열처리검사",
+        "model": null,
+        "aliases": [
+          "열처리검사",
+          "열처리검사",
+          "P12D-PLC"
+        ],
+        "line_nm": "P12D",
+        "stn_uid": "SEOHAN-PL002-S00062",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Measurement"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00068",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "열처리검사",
+        "model": null,
+        "aliases": [
+          "열처리검사",
+          "열처리검사",
+          "P12E-PLC"
+        ],
+        "line_nm": "P12E",
+        "stn_uid": "SEOHAN-PL002-S00068",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Measurement"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00074",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "열처리검사",
+        "model": null,
+        "aliases": [
+          "열처리검사",
+          "열처리검사",
+          "P12F-PLC"
+        ],
+        "line_nm": "P12F",
+        "stn_uid": "SEOHAN-PL002-S00074",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Measurement"
+      }
+    },
+    {
+      "src": "P12G",
+      "dst": "SEOHAN-PL002-S00091",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "열처리검사",
+        "model": null,
+        "aliases": [
+          "열처리검사",
+          "열처리검사",
+          "P12G-PLC"
+        ],
+        "line_nm": "P12G",
+        "stn_uid": "SEOHAN-PL002-S00091",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Measurement"
+      }
+    },
+    {
+      "src": "P13C",
+      "dst": "SEOHAN-PL002-S00001",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "하드밀링-R",
+        "model": "fanuc",
+        "aliases": [
+          "하드밀링-R",
+          "복합 하드 밀링-R",
+          "P13C/D 라인"
+        ],
+        "line_nm": "P13C",
+        "stn_uid": "SEOHAN-PL002-S00001",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "P13D",
+      "dst": "SEOHAN-PL002-S00002",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "하드밀링-R",
+        "model": "fanuc",
+        "aliases": [
+          "하드밀링-R",
+          "복합 하드 밀링-R",
+          "P13C/D 라인"
+        ],
+        "line_nm": "P13D",
+        "stn_uid": "SEOHAN-PL002-S00002",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "P13C",
+      "dst": "SEOHAN-PL002-S00003",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "하드밀링-L",
+        "model": "fanuc",
+        "aliases": [
+          "하드밀링-L",
+          "복합 하드 밀링-L",
+          "P13C/D 라인"
+        ],
+        "line_nm": "P13C",
+        "stn_uid": "SEOHAN-PL002-S00003",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "P13D",
+      "dst": "SEOHAN-PL002-S00004",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "하드밀링-L",
+        "model": "fanuc",
+        "aliases": [
+          "하드밀링-L",
+          "복합 하드 밀링-L",
+          "P13C/D 라인"
+        ],
+        "line_nm": "P13D",
+        "stn_uid": "SEOHAN-PL002-S00004",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "P13E",
+      "dst": "SEOHAN-PL002-S00007",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "하드밀링-L",
+        "model": "fanuc",
+        "aliases": [
+          "하드밀링-L",
+          "복합 하드 밀링-L",
+          "P13E/F 라인"
+        ],
+        "line_nm": "P13E",
+        "stn_uid": "SEOHAN-PL002-S00007",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "P13E",
+      "dst": "SEOHAN-PL002-S00008",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "하드밀링-R",
+        "model": "fanuc",
+        "aliases": [
+          "하드밀링-R",
+          "복합 하드 밀링-R",
+          "P13E/F 라인"
+        ],
+        "line_nm": "P13E",
+        "stn_uid": "SEOHAN-PL002-S00008",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "P13F",
+      "dst": "SEOHAN-PL002-S00009",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "하드밀링-L",
+        "model": "fanuc",
+        "aliases": [
+          "하드밀링-L",
+          "복합 하드 밀링-L",
+          "P13E/F 라인"
+        ],
+        "line_nm": "P13F",
+        "stn_uid": "SEOHAN-PL002-S00009",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "P13F",
+      "dst": "SEOHAN-PL002-S00010",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "하드밀링-R",
+        "model": "fanuc",
+        "aliases": [
+          "하드밀링-R",
+          "복합 하드 밀링-R",
+          "P13E/F 라인"
+        ],
+        "line_nm": "P13F",
+        "stn_uid": "SEOHAN-PL002-S00010",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "P13G",
+      "dst": "SEOHAN-PL002-S00013",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "하드밀링-L",
+        "model": "fanuc",
+        "aliases": [
+          "하드밀링-L",
+          "복합 하드 밀링-L",
+          "P13G 라인"
+        ],
+        "line_nm": "P13G",
+        "stn_uid": "SEOHAN-PL002-S00013",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "P13G",
+      "dst": "SEOHAN-PL002-S00014",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "하드밀링-R",
+        "model": "fanuc",
+        "aliases": [
+          "하드밀링-R",
+          "복합 하드 밀링-R",
+          "P13G 라인"
+        ],
+        "line_nm": "P13G",
+        "stn_uid": "SEOHAN-PL002-S00014",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00019",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "내경선삭L",
+        "model": "fanuc",
+        "aliases": [
+          "내경선삭L",
+          "내경선삭L",
+          "P12C"
+        ],
+        "line_nm": "P12C",
+        "stn_uid": "SEOHAN-PL002-S00019",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00021",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "내경선삭R",
+        "model": "fanuc",
+        "aliases": [
+          "내경선삭R",
+          "내경선삭R",
+          "P12C"
+        ],
+        "line_nm": "P12C",
+        "stn_uid": "SEOHAN-PL002-S00021",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00022",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "외경선삭L",
+        "model": "fanuc",
+        "aliases": [
+          "외경선삭L",
+          "외경선삭L",
+          "P12C"
+        ],
+        "line_nm": "P12C",
+        "stn_uid": "SEOHAN-PL002-S00022",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00023",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "외경선삭R",
+        "model": "fanuc",
+        "aliases": [
+          "외경선삭R",
+          "외경선삭R",
+          "P12C"
+        ],
+        "line_nm": "P12C",
+        "stn_uid": "SEOHAN-PL002-S00023",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00028",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "내경선삭L",
+        "model": "fanuc",
+        "aliases": [
+          "내경선삭L",
+          "내경선삭L",
+          "P12D"
+        ],
+        "line_nm": "P12D",
+        "stn_uid": "SEOHAN-PL002-S00028",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00029",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "내경선삭R",
+        "model": "fanuc",
+        "aliases": [
+          "내경선삭R",
+          "내경선삭R",
+          "P12D"
+        ],
+        "line_nm": "P12D",
+        "stn_uid": "SEOHAN-PL002-S00029",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00030",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "외경선삭L",
+        "model": "fanuc",
+        "aliases": [
+          "외경선삭L",
+          "외경선삭L",
+          "P12D"
+        ],
+        "line_nm": "P12D",
+        "stn_uid": "SEOHAN-PL002-S00030",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00031",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "외경선삭R",
+        "model": "fanuc",
+        "aliases": [
+          "외경선삭R",
+          "외경선삭R",
+          "P12D"
+        ],
+        "line_nm": "P12D",
+        "stn_uid": "SEOHAN-PL002-S00031",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00035",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "내경선삭L",
+        "model": "fanuc",
+        "aliases": [
+          "내경선삭L",
+          "내경선삭L",
+          "P12E"
+        ],
+        "line_nm": "P12E",
+        "stn_uid": "SEOHAN-PL002-S00035",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00036",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "내경선삭R",
+        "model": "fanuc",
+        "aliases": [
+          "내경선삭R",
+          "내경선삭R",
+          "P12E"
+        ],
+        "line_nm": "P12E",
+        "stn_uid": "SEOHAN-PL002-S00036",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00037",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "외경선삭L",
+        "model": "fanuc",
+        "aliases": [
+          "외경선삭L",
+          "외경선삭L",
+          "P12E"
+        ],
+        "line_nm": "P12E",
+        "stn_uid": "SEOHAN-PL002-S00037",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00038",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "외경선삭R",
+        "model": "fanuc",
+        "aliases": [
+          "외경선삭R",
+          "외경선삭R",
+          "P12E"
+        ],
+        "line_nm": "P12E",
+        "stn_uid": "SEOHAN-PL002-S00038",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00042",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "내경선삭L",
+        "model": "fanuc",
+        "aliases": [
+          "내경선삭L",
+          "내경선삭L",
+          "P12F"
+        ],
+        "line_nm": "P12F",
+        "stn_uid": "SEOHAN-PL002-S00042",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00043",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "내경선삭R",
+        "model": "fanuc",
+        "aliases": [
+          "내경선삭R",
+          "내경선삭R",
+          "P12F"
+        ],
+        "line_nm": "P12F",
+        "stn_uid": "SEOHAN-PL002-S00043",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00044",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "외경선삭L",
+        "model": "fanuc",
+        "aliases": [
+          "외경선삭L",
+          "외경선삭L",
+          "P12F"
+        ],
+        "line_nm": "P12F",
+        "stn_uid": "SEOHAN-PL002-S00044",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00045",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "외경선삭R",
+        "model": "fanuc",
+        "aliases": [
+          "외경선삭R",
+          "외경선삭R",
+          "P12F"
+        ],
+        "line_nm": "P12F",
+        "stn_uid": "SEOHAN-PL002-S00045",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "P12G",
+      "dst": "SEOHAN-PL002-S00049",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "내경선삭L",
+        "model": "fanuc",
+        "aliases": [
+          "내경선삭L",
+          "내경선삭L",
+          "P12G"
+        ],
+        "line_nm": "P12G",
+        "stn_uid": "SEOHAN-PL002-S00049",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "P12G",
+      "dst": "SEOHAN-PL002-S00050",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "내경선삭R",
+        "model": "fanuc",
+        "aliases": [
+          "내경선삭R",
+          "내경선삭R",
+          "P12G"
+        ],
+        "line_nm": "P12G",
+        "stn_uid": "SEOHAN-PL002-S00050",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "P12G",
+      "dst": "SEOHAN-PL002-S00051",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "외경선삭L",
+        "model": "fanuc",
+        "aliases": [
+          "외경선삭L",
+          "외경선삭L",
+          "P12G"
+        ],
+        "line_nm": "P12G",
+        "stn_uid": "SEOHAN-PL002-S00051",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "P12G",
+      "dst": "SEOHAN-PL002-S00052",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "외경선삭R",
+        "model": "fanuc",
+        "aliases": [
+          "외경선삭R",
+          "외경선삭R",
+          "P12G"
+        ],
+        "line_nm": "P12G",
+        "stn_uid": "SEOHAN-PL002-S00052",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (CNC)"
+      }
+    },
+    {
+      "src": "P14D",
+      "dst": "SEOHAN-PL002-S00005",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "드릴",
+        "model": "fanuc",
+        "aliases": [
+          "드릴",
+          "드릴링",
+          "P14D/E 라인"
+        ],
+        "line_nm": "P14D",
+        "stn_uid": "SEOHAN-PL002-S00005",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (MCT)"
+      }
+    },
+    {
+      "src": "P14E",
+      "dst": "SEOHAN-PL002-S00006",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "드릴",
+        "model": "fanuc",
+        "aliases": [
+          "드릴",
+          "드릴링",
+          "P14D/E 라인"
+        ],
+        "line_nm": "P14E",
+        "stn_uid": "SEOHAN-PL002-S00006",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (MCT)"
+      }
+    },
+    {
+      "src": "P13E",
+      "dst": "SEOHAN-PL002-S00011",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "드릴",
+        "model": "fanuc",
+        "aliases": [
+          "드릴",
+          "드릴링",
+          "P13E/F 라인"
+        ],
+        "line_nm": "P13E",
+        "stn_uid": "SEOHAN-PL002-S00011",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (MCT)"
+      }
+    },
+    {
+      "src": "P13F",
+      "dst": "SEOHAN-PL002-S00012",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "드릴",
+        "model": "fanuc",
+        "aliases": [
+          "드릴",
+          "드릴링",
+          "P13E/F 라인"
+        ],
+        "line_nm": "P13F",
+        "stn_uid": "SEOHAN-PL002-S00012",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (MCT)"
+      }
+    },
+    {
+      "src": "P13G",
+      "dst": "SEOHAN-PL002-S00015",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "드릴",
+        "model": "fanuc",
+        "aliases": [
+          "드릴",
+          "드릴링",
+          "P13G 라인"
+        ],
+        "line_nm": "P13G",
+        "stn_uid": "SEOHAN-PL002-S00015",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (MCT)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00016",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "트랙 밀링",
+        "model": "fanuc",
+        "aliases": [
+          "트랙 밀링",
+          "트랙 밀링",
+          "P12C"
+        ],
+        "line_nm": "P12C",
+        "stn_uid": "SEOHAN-PL002-S00016",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (MCT)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00018",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "코킹",
+        "model": "fanuc",
+        "aliases": [
+          "코킹",
+          "코킹",
+          "P12C"
+        ],
+        "line_nm": "P12C",
+        "stn_uid": "SEOHAN-PL002-S00018",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (MCT)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00025",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "트랙 밀링",
+        "model": "fanuc",
+        "aliases": [
+          "트랙 밀링",
+          "트랙 밀링",
+          "P12D"
+        ],
+        "line_nm": "P12D",
+        "stn_uid": "SEOHAN-PL002-S00025",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (MCT)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00027",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "코킹",
+        "model": "fanuc",
+        "aliases": [
+          "코킹",
+          "코킹",
+          "P12D"
+        ],
+        "line_nm": "P12D",
+        "stn_uid": "SEOHAN-PL002-S00027",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (MCT)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00032",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "트랙 밀링",
+        "model": "fanuc",
+        "aliases": [
+          "트랙 밀링",
+          "트랙 밀링",
+          "P12E"
+        ],
+        "line_nm": "P12E",
+        "stn_uid": "SEOHAN-PL002-S00032",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (MCT)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00034",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "코킹",
+        "model": "fanuc",
+        "aliases": [
+          "코킹",
+          "코킹",
+          "P12E"
+        ],
+        "line_nm": "P12E",
+        "stn_uid": "SEOHAN-PL002-S00034",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (MCT)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00039",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "트랙 밀링",
+        "model": "fanuc",
+        "aliases": [
+          "트랙 밀링",
+          "트랙 밀링",
+          "P12F"
+        ],
+        "line_nm": "P12F",
+        "stn_uid": "SEOHAN-PL002-S00039",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (MCT)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00041",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "코킹",
+        "model": "fanuc",
+        "aliases": [
+          "코킹",
+          "코킹",
+          "P12F"
+        ],
+        "line_nm": "P12F",
+        "stn_uid": "SEOHAN-PL002-S00041",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (MCT)"
+      }
+    },
+    {
+      "src": "P12G",
+      "dst": "SEOHAN-PL002-S00046",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "트랙 밀링",
+        "model": "fanuc",
+        "aliases": [
+          "트랙 밀링",
+          "트랙 밀링",
+          "P12G"
+        ],
+        "line_nm": "P12G",
+        "stn_uid": "SEOHAN-PL002-S00046",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (MCT)"
+      }
+    },
+    {
+      "src": "P12G",
+      "dst": "SEOHAN-PL002-S00048",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "코킹",
+        "model": "fanuc",
+        "aliases": [
+          "코킹",
+          "코킹",
+          "P12G"
+        ],
+        "line_nm": "P12G",
+        "stn_uid": "SEOHAN-PL002-S00048",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "NC Machine (MCT)"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00058",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "검사,방청,적재",
+        "model": null,
+        "aliases": [
+          "검사,방청,적재",
+          "검사,방청,적재",
+          "P12C-PLC"
+        ],
+        "line_nm": "P12C",
+        "stn_uid": "SEOHAN-PL002-S00058",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "RUN OUT"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00064",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "검사,방청,적재",
+        "model": null,
+        "aliases": [
+          "검사,방청,적재",
+          "검사,방청,적재",
+          "P12D-PLC"
+        ],
+        "line_nm": "P12D",
+        "stn_uid": "SEOHAN-PL002-S00064",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "RUN OUT"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00070",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "검사,방청,적재",
+        "model": null,
+        "aliases": [
+          "검사,방청,적재",
+          "검사,방청,적재",
+          "P12E-PLC"
+        ],
+        "line_nm": "P12E",
+        "stn_uid": "SEOHAN-PL002-S00070",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "RUN OUT"
+      }
+    },
+    {
+      "src": "SEOHAN-PL002",
+      "dst": "SEOHAN-PL002-S00076",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "검사,방청,적재",
+        "model": null,
+        "aliases": [
+          "검사,방청,적재",
+          "검사,방청,적재",
+          "P12F-PLC"
+        ],
+        "line_nm": "P12F",
+        "stn_uid": "SEOHAN-PL002-S00076",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "RUN OUT"
+      }
+    },
+    {
+      "src": "P12G",
+      "dst": "SEOHAN-PL002-S00093",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "검사,방청,적재",
+        "model": null,
+        "aliases": [
+          "검사,방청,적재",
+          "검사,방청,적재",
+          "P12G-PLC"
+        ],
+        "line_nm": "P12G",
+        "stn_uid": "SEOHAN-PL002-S00093",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "RUN OUT"
+      }
+    },
+    {
+      "src": "P06",
+      "dst": "SEOHAN-PL002-S00083",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "RING조립-RCOVER압입공정,스웨이징공정&밴드체결공정",
+        "model": null,
+        "aliases": [
+          "RING조립-RCOVER압입공정,스웨이징공정&밴드체결공정",
+          "RING조립-RCOVER압입공정,스웨이징공정&밴드체결공정",
+          "P06-PLC"
+        ],
+        "line_nm": "P06",
+        "stn_uid": "SEOHAN-PL002-S00083",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "PLC"
+      }
+    },
+    {
+      "src": "P06",
+      "dst": "SEOHAN-PL002-S00084",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "실런트제거공정,종합공정검사",
+        "model": null,
+        "aliases": [
+          "실런트제거공정,종합공정검사",
+          "실런트제거공정,종합공정검사",
+          "P06-PLC"
+        ],
+        "line_nm": "P06",
+        "stn_uid": "SEOHAN-PL002-S00084",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "PLC"
+      }
+    },
+    {
+      "src": "P07",
+      "dst": "SEOHAN-PL002-S00085",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "이면검사&LaserMarking,SSHAFT&부트커버압입공정",
+        "model": null,
+        "aliases": [
+          "이면검사&LaserMarking,SSHAFT&부트커버압입공정",
+          "이면검사&LaserMarking,SSHAFT&부트커버압입공정",
+          "P07-PLC"
+        ],
+        "line_nm": "P07",
+        "stn_uid": "SEOHAN-PL002-S00085",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "PLC"
+      }
+    },
+    {
+      "src": "P07",
+      "dst": "SEOHAN-PL002-S00086",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "RING조립-RCOVER압입공정,스웨이징공정&밴드체결공정",
+        "model": null,
+        "aliases": [
+          "RING조립-RCOVER압입공정,스웨이징공정&밴드체결공정",
+          "RING조립-RCOVER압입공정,스웨이징공정&밴드체결공정",
+          "P07-PLC"
+        ],
+        "line_nm": "P07",
+        "stn_uid": "SEOHAN-PL002-S00086",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "PLC"
+      }
+    },
+    {
+      "src": "P07",
+      "dst": "SEOHAN-PL002-S00087",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "실런트제거공정,종합공정검사",
+        "model": null,
+        "aliases": [
+          "실런트제거공정,종합공정검사",
+          "실런트제거공정,종합공정검사",
+          "P07-PLC"
+        ],
+        "line_nm": "P07",
+        "stn_uid": "SEOHAN-PL002-S00087",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "PLC"
+      }
+    },
+    {
+      "src": "P04",
+      "dst": "SEOHAN-PL002-S00078",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "SSHAFT&부트커버압입공정",
+        "model": null,
+        "aliases": [
+          "SSHAFT&부트커버압입공정",
+          "SSHAFT&부트커버압입공정",
+          "P04-PLC"
+        ],
+        "line_nm": "P04",
+        "stn_uid": "SEOHAN-PL002-S00078",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Press"
+      }
+    },
+    {
+      "src": "P04",
+      "dst": "SEOHAN-PL002-S00079",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "RING조립-RCOVER압입공정",
+        "model": null,
+        "aliases": [
+          "RING조립-RCOVER압입공정",
+          "RING조립-RCOVER압입공정",
+          "P04-PLC"
+        ],
+        "line_nm": "P04",
+        "stn_uid": "SEOHAN-PL002-S00079",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Press"
+      }
+    },
+    {
+      "src": "P06",
+      "dst": "SEOHAN-PL002-S00082",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "SSHAFT&부트커버압입공정",
+        "model": null,
+        "aliases": [
+          "SSHAFT&부트커버압입공정",
+          "SSHAFT&부트커버압입공정",
+          "P06-PLC"
+        ],
+        "line_nm": "P06",
+        "stn_uid": "SEOHAN-PL002-S00082",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Press"
+      }
+    },
+    {
+      "src": "P42B",
+      "dst": "SEOHAN-PL002-S00119",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "BOOT&COVER클램프COVER(LH)",
+        "model": null,
+        "aliases": [
+          "BOOT&COVER클램프COVER(LH)",
+          "BOOT&COVER클램프COVER(LH)",
+          "P42B-PLC"
+        ],
+        "line_nm": "P42B",
+        "stn_uid": "SEOHAN-PL002-S00119",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Press"
+      }
+    },
+    {
+      "src": "P42B",
+      "dst": "SEOHAN-PL002-S00120",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "BOOT&COVER클램프COVER(RH)",
+        "model": null,
+        "aliases": [
+          "BOOT&COVER클램프COVER(RH)",
+          "BOOT&COVER클램프COVER(RH)",
+          "P42B-PLC"
+        ],
+        "line_nm": "P42B",
+        "stn_uid": "SEOHAN-PL002-S00120",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Press"
+      }
+    },
+    {
+      "src": "P42C",
+      "dst": "SEOHAN-PL002-S00121",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "BOOT&COVER클램프COVER(LH)",
+        "model": null,
+        "aliases": [
+          "BOOT&COVER클램프COVER(LH)",
+          "BOOT&COVER클램프COVER(LH)",
+          "P42C-PLC"
+        ],
+        "line_nm": "P42C",
+        "stn_uid": "SEOHAN-PL002-S00121",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Press"
+      }
+    },
+    {
+      "src": "P42C",
+      "dst": "SEOHAN-PL002-S00122",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "BOOT&COVER클램프COVER(RH)",
+        "model": null,
+        "aliases": [
+          "BOOT&COVER클램프COVER(RH)",
+          "BOOT&COVER클램프COVER(RH)",
+          "P42C-PLC"
+        ],
+        "line_nm": "P42C",
+        "stn_uid": "SEOHAN-PL002-S00122",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Press"
+      }
+    },
+    {
+      "src": "P03",
+      "dst": "SEOHAN-PL002-S00130",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "Shaft압입-Boot커버압입",
+        "model": null,
+        "aliases": [
+          "Shaft압입-Boot커버압입",
+          "Shaft압입-Boot커버압입",
+          "P03-PLC"
+        ],
+        "line_nm": "P03",
+        "stn_uid": "SEOHAN-PL002-S00130",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Press"
+      }
+    },
+    {
+      "src": "P03",
+      "dst": "SEOHAN-PL002-S00131",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "RING조립-RCOVER압입공정",
+        "model": null,
+        "aliases": [
+          "RING조립-RCOVER압입공정",
+          "RING조립-RCOVER압입공정",
+          "P03-PLC"
+        ],
+        "line_nm": "P03",
+        "stn_uid": "SEOHAN-PL002-S00131",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Press"
+      }
+    },
+    {
+      "src": "P13C",
+      "dst": "SEOHAN-PL002-S00095",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "세척&방청",
+        "model": null,
+        "aliases": [
+          "세척&방청",
+          "세척",
+          "P13C-PLC"
+        ],
+        "line_nm": "P13C",
+        "stn_uid": "SEOHAN-PL002-S00095",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Washing"
+      }
+    },
+    {
+      "src": "P13D",
+      "dst": "SEOHAN-PL002-S00098",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "세척&방청",
+        "model": null,
+        "aliases": [
+          "세척&방청",
+          "세척",
+          "P13D-PLC"
+        ],
+        "line_nm": "P13D",
+        "stn_uid": "SEOHAN-PL002-S00098",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Washing"
+      }
+    },
+    {
+      "src": "P13E",
+      "dst": "SEOHAN-PL002-S00103",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "외륜 세척기",
+        "model": null,
+        "aliases": [
+          "외륜 세척기",
+          "세척",
+          "P13E-PLC"
+        ],
+        "line_nm": "P13E",
+        "stn_uid": "SEOHAN-PL002-S00103",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Washing"
+      }
+    },
+    {
+      "src": "P13F",
+      "dst": "SEOHAN-PL002-S00107",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "외륜 세척기",
+        "model": null,
+        "aliases": [
+          "외륜 세척기",
+          "세척",
+          "P13F-PLC"
+        ],
+        "line_nm": "P13F",
+        "stn_uid": "SEOHAN-PL002-S00107",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Washing"
+      }
+    },
+    {
+      "src": "P13G",
+      "dst": "SEOHAN-PL002-S00111",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "외륜세척기",
+        "model": null,
+        "aliases": [
+          "외륜세척기",
+          "세척",
+          "P13G-PLC"
+        ],
+        "line_nm": "P13G",
+        "stn_uid": "SEOHAN-PL002-S00111",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Washing"
+      }
+    },
+    {
+      "src": "P14D",
+      "dst": "SEOHAN-PL002-S00115",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "AIR & 배출",
+        "model": null,
+        "aliases": [
+          "AIR & 배출",
+          "Air Blow",
+          "P14D-PLC"
+        ],
+        "line_nm": "P14D",
+        "stn_uid": "SEOHAN-PL002-S00115",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Washing"
+      }
+    },
+    {
+      "src": "P14E",
+      "dst": "SEOHAN-PL002-S00118",
+      "type": "hasChild",
+      "scope": "instance",
+      "props": {
+        "name": "AIR & 배출",
+        "model": null,
+        "aliases": [
+          "AIR & 배출",
+          "Air Blow",
+          "P14E-PLC"
+        ],
+        "line_nm": "P14E",
+        "stn_uid": "SEOHAN-PL002-S00118",
+        "plant_uid": "SEOHAN-PL002",
+        "target_type": "station",
+        "process_category": "Washing"
+      }
+    },
+    {
+      "src": "DANA_JL_드릴_라인",
+      "dst": "DANA_JL_하드_밀링_라인",
+      "type": "precedes",
+      "scope": "instance",
+      "props": {
+        "to_stage": "하드밀링",
+        "from_stage": "드릴",
+        "product_family": "Dana JL"
+      }
+    },
+    {
+      "src": "DANA_JL_하드_밀링_라인",
+      "dst": "DANA_JL_선삭후_라인",
+      "type": "precedes",
+      "scope": "instance",
+      "props": {
+        "note": "열처리 CT 가 짧아 하드밀링 직후 바로 열처리 — 병목 완화 목적",
+        "to_stage": "선삭후(열처리)",
+        "from_stage": "하드밀링",
+        "product_family": "Dana JL"
+      }
+    },
+    {
+      "src": "DANA_JL_선삭후_라인",
+      "dst": "DANA_JL_조립_라인",
+      "type": "precedes",
+      "scope": "instance",
+      "props": {
+        "to_stage": "조립",
+        "from_stage": "선삭후(열처리)",
+        "product_family": "Dana JL"
+      }
+    },
+    {
+      "src": "DANA_JT_U725_하드_밀링_라",
+      "dst": "DANA_JT_U725_선삭후_라인",
+      "type": "precedes",
+      "scope": "instance",
+      "props": {
+        "note": "열처리 CT 가 짧아 하드밀링 직후 바로 열처리 — 병목 완화 목적",
+        "to_stage": "선삭후(열처리)",
+        "from_stage": "하드밀링",
+        "product_family": "Dana JT/U725"
+      }
+    },
+    {
+      "src": "DANA_JT_U725_선삭후_라인",
+      "dst": "DANA_U725_조립_라인",
+      "type": "precedes",
+      "scope": "instance",
+      "props": {
+        "to_stage": "조립",
+        "from_stage": "선삭후(열처리)",
+        "product_family": "Dana JT/U725"
+      }
+    },
+    {
+      "src": "DANA_P703_하드_밀링_라인",
+      "dst": "DANA_P703_선삭후_라인",
+      "type": "precedes",
+      "scope": "instance",
+      "props": {
+        "note": "열처리 CT 가 짧아 하드밀링 직후 바로 열처리 — 병목 완화 목적",
+        "to_stage": "선삭후(열처리)",
+        "from_stage": "하드밀링",
+        "product_family": "Dana P703"
+      }
+    }
+  ],
+  "concepts": [
+    {
+      "semantic_id": "https://admin-shell.io/idta/cause/clamp_failure",
+      "id_short": "clamp_failure",
+      "preferred_name": "클램프 결함",
+      "category": "Property",
+      "scope_company_id": "133d7286-33ab-4056-aca4-0287b7e22d05"
+    },
+    {
+      "semantic_id": "https://admin-shell.io/idta/cause/conveyor_jam",
+      "id_short": "conveyor_jam",
+      "preferred_name": "컨베이어 잼",
+      "category": "Property",
+      "scope_company_id": "133d7286-33ab-4056-aca4-0287b7e22d05"
+    },
+    {
+      "semantic_id": "https://admin-shell.io/idta/cause/door_interlock_failure",
+      "id_short": "door_interlock_failure",
+      "preferred_name": "도어 인터락 결함",
+      "category": "Property",
+      "scope_company_id": "133d7286-33ab-4056-aca4-0287b7e22d05"
+    },
+    {
+      "semantic_id": "https://admin-shell.io/idta/cause/loader_failure",
+      "id_short": "loader_failure",
+      "preferred_name": "로더 결함",
+      "category": "Property",
+      "scope_company_id": "133d7286-33ab-4056-aca4-0287b7e22d05"
+    },
+    {
+      "semantic_id": "https://admin-shell.io/idta/cause/pneumatic_actuator_failure",
+      "id_short": "pneumatic_actuator_failure",
+      "preferred_name": "공압 액추에이터 결함",
+      "category": "Property",
+      "scope_company_id": "133d7286-33ab-4056-aca4-0287b7e22d05"
+    },
+    {
+      "semantic_id": "https://admin-shell.io/idta/quality/Dimension",
+      "id_short": "Dimension",
+      "preferred_name": "치수",
+      "category": "Quality",
+      "scope_company_id": "133d7286-33ab-4056-aca4-0287b7e22d05"
+    },
+    {
+      "semantic_id": "https://admin-shell.io/idta/quality/Hardness",
+      "id_short": "Hardness",
+      "preferred_name": "경도",
+      "category": "Quality",
+      "scope_company_id": "133d7286-33ab-4056-aca4-0287b7e22d05"
+    },
+    {
+      "semantic_id": "https://admin-shell.io/idta/quality/Roundness",
+      "id_short": "Roundness",
+      "preferred_name": "진원도",
+      "category": "Quality",
+      "scope_company_id": "133d7286-33ab-4056-aca4-0287b7e22d05"
+    },
+    {
+      "semantic_id": "https://admin-shell.io/idta/quality/SurfaceRoughness",
+      "id_short": "SurfaceRoughness",
+      "preferred_name": "표면조도",
+      "category": "Quality",
+      "scope_company_id": "133d7286-33ab-4056-aca4-0287b7e22d05"
+    }
+  ],
+  "station_types": [
+    {
+      "code": "CONV",
+      "name": "컨베이어",
+      "n_stations": 56
+    },
+    {
+      "code": "ASSY",
+      "name": "조립기",
+      "n_stations": 49
+    },
+    {
+      "code": "INSP",
+      "name": "검사기",
+      "n_stations": 32
+    },
+    {
+      "code": "MCT",
+      "name": "머시닝센터",
+      "n_stations": 29
+    },
+    {
+      "code": "CNC",
+      "name": "CNC 선반",
+      "n_stations": 20
+    },
+    {
+      "code": "RINSE",
+      "name": "수세/린스",
+      "n_stations": 6
+    },
+    {
+      "code": "HEAT",
+      "name": "HEAT",
+      "n_stations": 5
+    }
+  ],
+  "alarm_types": [
+    {
+      "type": "PLC",
+      "count": 3508
+    },
+    {
+      "type": "MACHINE",
+      "count": 421
+    },
+    {
+      "type": "PMC",
+      "count": 373
+    },
+    {
+      "type": "OTHER",
+      "count": 3
+    }
+  ],
+  "line_routes": [
+    {
+      "from": "DANA_JL_드릴_라인",
+      "to": "DANA_JL_하드_밀링_라인",
+      "family": "Dana JL",
+      "note": null
+    },
+    {
+      "from": "DANA_JL_하드_밀링_라인",
+      "to": "DANA_JL_선삭후_라인",
+      "family": "Dana JL",
+      "note": "열처리 CT 가 짧아 하드밀링 직후 바로 열처리 — 병목 완화 목적"
+    },
+    {
+      "from": "DANA_JL_선삭후_라인",
+      "to": "DANA_JL_조립_라인",
+      "family": "Dana JL",
+      "note": null
+    },
+    {
+      "from": "DANA_JT_U725_하드_밀링_라",
+      "to": "DANA_JT_U725_선삭후_라인",
+      "family": "Dana JT/U725",
+      "note": "열처리 CT 가 짧아 하드밀링 직후 바로 열처리 — 병목 완화 목적"
+    },
+    {
+      "from": "DANA_JT_U725_선삭후_라인",
+      "to": "DANA_U725_조립_라인",
+      "family": "Dana JT/U725",
+      "note": null
+    },
+    {
+      "from": "DANA_P703_하드_밀링_라인",
+      "to": "DANA_P703_선삭후_라인",
+      "family": "Dana P703",
+      "note": "열처리 CT 가 짧아 하드밀링 직후 바로 열처리 — 병목 완화 목적"
+    }
+  ],
+  "node_call_plan": {
+    "plant": {
+      "realtime": {
+        "interval_sec": null,
+        "methods": [
+          {
+            "method": "get_dashboard_overview",
+            "interval_sec": 300
+          },
+          {
+            "method": "get_uph_plan",
+            "interval_sec": 900
+          },
+          {
+            "method": "get_v2_line_status",
+            "interval_sec": 60
+          },
+          {
+            "method": "get_v2_plant_summary",
+            "interval_sec": 60
+          }
+        ]
+      },
+      "event": {
+        "interval_sec": null,
+        "methods": [
+          {
+            "method": "get_alarm_calendar",
+            "interval_sec": 60
+          },
+          {
+            "method": "get_alarm_hourly_summary",
+            "interval_sec": 60
+          },
+          {
+            "method": "get_alarm_list",
+            "interval_sec": 60
+          },
+          {
+            "method": "get_alarm_summary",
+            "interval_sec": 60
+          },
+          {
+            "method": "get_alarm_weekly_summary",
+            "interval_sec": 60
+          },
+          {
+            "method": "get_monitoring_line_summary",
+            "interval_sec": 60
+          },
+          {
+            "method": "get_operation_stops",
+            "interval_sec": 3600
+          }
+        ]
+      },
+      "static": {
+        "interval_sec": 21600,
+        "methods": [
+          {
+            "method": "get_plants",
+            "interval_sec": 21600
+          }
+        ]
+      }
+    },
+    "line": {
+      "realtime": {
+        "interval_sec": null,
+        "methods": [
+          {
+            "method": "get_line_measure_data",
+            "interval_sec": 300
+          },
+          {
+            "method": "get_line_operation_rates",
+            "interval_sec": 60
+          },
+          {
+            "method": "get_line_operations",
+            "interval_sec": 60
+          },
+          {
+            "method": "get_line_product_operations",
+            "interval_sec": 60
+          },
+          {
+            "method": "get_line_production_ct",
+            "interval_sec": 900
+          },
+          {
+            "method": "get_line_products",
+            "interval_sec": 60
+          },
+          {
+            "method": "get_line_uph",
+            "interval_sec": 900
+          },
+          {
+            "method": "get_lines",
+            "interval_sec": 60
+          },
+          {
+            "method": "get_measure_change_lines_status",
+            "interval_sec": 300
+          },
+          {
+            "method": "get_measure_data",
+            "interval_sec": 300
+          },
+          {
+            "method": "get_measure_item",
+            "interval_sec": 300
+          },
+          {
+            "method": "get_measure_mappings",
+            "interval_sec": 300
+          },
+          {
+            "method": "get_measure_mappings_key",
+            "interval_sec": 300
+          },
+          {
+            "method": "get_measure_statistics",
+            "interval_sec": 300
+          },
+          {
+            "method": "get_measure_trend",
+            "interval_sec": 300
+          }
+        ]
+      },
+      "event": {
+        "interval_sec": 300,
+        "methods": [
+          {
+            "method": "get_defect_summary",
+            "interval_sec": 300
+          },
+          {
+            "method": "get_downtime_lines_summary",
+            "interval_sec": 300
+          },
+          {
+            "method": "get_measure_ng_type_status",
+            "interval_sec": 300
+          },
+          {
+            "method": "get_ng_lines_status",
+            "interval_sec": 300
+          }
+        ]
+      },
+      "static": {
+        "interval_sec": 300,
+        "methods": [
+          {
+            "method": "get_measure_lines_inspection",
+            "interval_sec": 300
+          },
+          {
+            "method": "get_measure_lines_inspection_headers",
+            "interval_sec": 300
+          },
+          {
+            "method": "get_spc_chart_data",
+            "interval_sec": 300
+          }
+        ]
+      }
+    },
+    "station": {
+      "realtime": {
+        "interval_sec": null,
+        "methods": [
+          {
+            "method": "get_station_categories",
+            "interval_sec": 60
+          },
+          {
+            "method": "get_station_category",
+            "interval_sec": 60
+          },
+          {
+            "method": "get_station_status",
+            "interval_sec": 60
+          },
+          {
+            "method": "get_station_temperature_chart",
+            "interval_sec": 60
+          },
+          {
+            "method": "get_stations",
+            "interval_sec": 60
+          },
+          {
+            "method": "get_stations_operations_summary",
+            "interval_sec": 3600
+          },
+          {
+            "method": "get_sub_station",
+            "interval_sec": 60
+          }
+        ]
+      },
+      "event": {
+        "interval_sec": 300,
+        "methods": [
+          {
+            "method": "get_downtime_stations_detail",
+            "interval_sec": 300
+          },
+          {
+            "method": "get_ng_stations_status",
+            "interval_sec": 300
+          }
+        ]
+      }
+    },
+    "product": {
+      "realtime": {
+        "interval_sec": null,
+        "methods": [
+          {
+            "method": "get_product_operations",
+            "interval_sec": 21600
+          },
+          {
+            "method": "get_production_summary",
+            "interval_sec": 900
+          },
+          {
+            "method": "get_products_base_ct",
+            "interval_sec": 21600
+          }
+        ]
+      },
+      "static": {
+        "interval_sec": null,
+        "methods": [
+          {
+            "method": "get_product",
+            "interval_sec": 21600
+          },
+          {
+            "method": "get_product_category",
+            "interval_sec": 21600
+          },
+          {
+            "method": "get_product_oids",
+            "interval_sec": 21600
+          },
+          {
+            "method": "get_product_production_history",
+            "interval_sec": 900
+          },
+          {
+            "method": "get_product_tree",
+            "interval_sec": 21600
+          },
+          {
+            "method": "get_products",
+            "interval_sec": 21600
+          },
+          {
+            "method": "get_products_chart",
+            "interval_sec": 900
+          },
+          {
+            "method": "get_products_line_rank",
+            "interval_sec": 900
+          }
+        ]
+      }
+    },
+    "group": {
+      "static": {
+        "interval_sec": 3600,
+        "methods": [
+          {
+            "method": "get_groups",
+            "interval_sec": 3600
+          }
+        ]
+      }
+    },
+    "system": {
+      "realtime": {
+        "interval_sec": 60,
+        "methods": [
+          {
+            "method": "get_connection_status",
+            "interval_sec": 60
+          }
+        ]
+      },
+      "static": {
+        "interval_sec": 86400,
+        "methods": [
+          {
+            "method": "get_common_codes",
+            "interval_sec": 86400
+          },
+          {
+            "method": "get_login_histories",
+            "interval_sec": 86400
+          },
+          {
+            "method": "get_report_template",
+            "interval_sec": 86400
+          },
+          {
+            "method": "get_user",
+            "interval_sec": 86400
+          },
+          {
+            "method": "get_users",
+            "interval_sec": 86400
+          }
+        ]
+      }
+    }
+  },
+  "errors_404": [
+    "get_plant_tree_layout",
+    "get_line",
+    "get_station",
+    "get_sub_stations",
+    "get_station_realtime_status",
+    "get_station_realtime_data",
+    "get_station_active_alarms",
+    "get_station_events",
+    "get_measure_items"
+  ]
+}

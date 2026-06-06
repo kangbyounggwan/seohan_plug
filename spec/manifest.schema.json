@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://factor.io.kr/schemas/plugin-manifest-1.0.json",
+  "title": "Factor MES Plugin Manifest (T1 declarative)",
+  "description": "플러그인 번들 최상위 계약. 모든 플러그인은 이 매니페스트를 선언한다. T1 = 선언적 데이터 전용(코드 실행 없음).",
+  "type": "object",
+  "required": ["schema_version", "id", "name", "version", "type", "visibility", "author", "kernel_api", "data", "checksum"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0", "description": "매니페스트 스키마 버전" },
+    "id": { "type": "string", "pattern": "^[a-z0-9_]+$", "maxLength": 64, "description": "전역 고유 식별자. 파일명/URL 에 쓰임(traversal 안전). ontology type 은 adapter_type 과 동일 권장." },
+    "name": { "type": "string", "minLength": 1, "maxLength": 80, "description": "표시명" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$", "description": "semver. 동일 id 의 새 version 은 레지스트리에 새 row 로 게시." },
+    "type": { "type": "string", "enum": ["ontology"], "description": "T1 허용 타입. (향후 T2: view, T3: adapter)" },
+    "adapter_type": { "type": "string", "pattern": "^[a-z0-9_]+$", "description": "ontology type 의 바인딩 키. 데스크탑 뷰어 ?pack=<adapter_type>, 백엔드 overlay lookup." },
+    "visibility": { "type": "string", "enum": ["public", "company-private"], "description": "public=모든 인증 사용자. company-private=소유 회사만." },
+    "company_id": { "type": "string", "description": "company-private 일 때 필수. 소유 회사 UUID." },
+    "author": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "verified": { "type": "boolean", "description": "verified publisher 여부(서명+심사 통과). community=false." }
+      }
+    },
+    "kernel_api": { "type": "string", "description": "호환 커널 API 범위(semver range, 예 ^1.0). 비호환 시 install 거부." },
+    "description": { "type": "string", "maxLength": 500 },
+    "license": { "type": "string" },
+    "permissions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "maxItems": 0,
+      "description": "T1 선언적 플러그인은 반드시 빈 배열. 코드 실행/권한 없음. (T2/T3 에서 확장)"
+    },
+    "data": {
+      "type": "object",
+      "required": ["pack"],
+      "properties": {
+        "pack": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+$", "description": "번들 내 pack 데이터 파일명(예: pack.json)." }
+      }
+    },
+    "checksum": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$", "description": "pack 데이터의 canonical(compact JSON) sha256. install 시 무결성 검증." },
+    "created_at": { "type": "string", "description": "ISO8601 게시 시각" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "visibility": { "const": "company-private" } } },
+      "then": { "required": ["company_id"] }
+    }
+  ]
+}

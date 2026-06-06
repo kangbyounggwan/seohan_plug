@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "id": "seohan",
+  "name": "서한 MES 온톨로지",
+  "version": "1.0.0",
+  "type": "ontology",
+  "adapter_type": "seohan",
+  "visibility": "company-private",
+  "company_id": "133d7286-33ab-4056-aca4-0287b7e22d05",
+  "author": { "name": "Factor", "email": "", "verified": true },
+  "kernel_api": "^1.0",
+  "description": "서한 3공장(C동 하드밀링/열처리 포함) 라인·스테이션·공정순서·개념 사전 온톨로지 overlay.",
+  "license": "proprietary",
+  "permissions": [],
+  "data": { "pack": "pack.json" },
+  "checksum": "sha256:fc095d99423465dd5118b29fd7b83f14403c8cd5543c028d29b76b13d46062a4",
+  "created_at": "2026-06-07T00:00:00Z"
+}
