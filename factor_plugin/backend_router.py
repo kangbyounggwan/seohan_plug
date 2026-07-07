@@ -157,3 +157,101 @@ def download_pack(
             "X-Plugin-Version": str(rec.manifest.get("version", "")),
         },
     )
+
+
+# ── S4 install: 다운로드 → 백단 이관(테넌트 설치 기록) ──────────────────────
+# "지금 열기(webview)" 와 구분되는 "다운로드" 액션이 이 엔드포인트를 부른다.
+# 데이터형(T1 ontology) 플러그인만 설치 대상 — 코드 실행 0, 선언형 pack.
+# 기록 테이블 plugin_installs (마이그 078): UNIQUE(company_id, plugin_id) upsert.
+# 쓰기는 service_role 로만 — visibility 검증을 통과한 요청만 기록된다(IDOR 차단 동일).
+_INSTALLABLE_TYPES = ("ontology",)
+
+
+@router.post("/plugins/{plugin_id}/install")
+def install_plugin(
+    plugin_id: str,
+    user_id: str = Depends(require_user_id),
+    sb=Depends(get_supabase),
+) -> dict:
+    """플러그인을 요청자 회사에 설치 기록(백단 이관). 미소유/미존재 → 404(존재 은닉).
+
+    멱등: 같은 (company_id, plugin_id) 재호출은 버전/체크섬/status 만 갱신(installed_at 불변).
+    """
+    company_id = _company_id_for_user(sb, user_id)
+    if company_id is None:
+        raise HTTPException(403, "no company for user (profiles.company_id null)")
+    rec = discover_plugins(_plugins_dir()).get(plugin_id)
+    if not rec or not _visible(rec.manifest, company_id):
+        raise HTTPException(404, "plugin not found")
+    m = rec.manifest
+    if m.get("type") not in _INSTALLABLE_TYPES:
+        # 서비스형(report 등)은 클릭 설치 불가 — 데이터형만 백단 이관 대상.
+        raise HTTPException(
+            400, f"plugin type {m.get('type')!r} is not installable (data plugins only)"
+        )
+    pack = load_pack(rec)  # 설치 시점 pack 실체화 → 체크섬 스냅샷(드리프트 감지 기준)
+    row = {
+        "company_id": company_id,
+        "user_id": user_id,
+        "plugin_id": rec.id,
+        "plugin_type": m.get("type", "ontology"),
+        "adapter_type": m.get("adapter_type"),
+        "version": str(m.get("version", "")),
+        "checksum": pack_checksum(pack),
+        "status": "active",
+        "manifest": _public_manifest(m),
+        "error": None,
+    }
+    res = (
+        sb.table("plugin_installs")
+        .upsert(row, on_conflict="company_id,plugin_id")
+        .execute()
+    )
+    installed = res.data[0] if getattr(res, "data", None) else row
+    logger.info(
+        "plugin installed: company=%s plugin=%s v%s by user=%s",
+        company_id, rec.id, row["version"], user_id,
+    )
+    return {"install": installed}
+
+
+@router.get("/installs")
+def list_installs(
+    user_id: str = Depends(require_user_id),
+    sb=Depends(get_supabase),
+) -> dict:
+    """요청자 회사의 설치 이력(추적 UI/설치상태). status 무관 전체 — FE 가 필터."""
+    company_id = _company_id_for_user(sb, user_id)
+    if company_id is None:
+        return {"installs": []}
+    rows = (
+        sb.table("plugin_installs")
+        .select("*")
+        .eq("company_id", company_id)
+        .order("installed_at", desc=True)
+        .execute()
+        .data
+    )
+    return {"installs": rows or []}
+
+
+@router.delete("/plugins/{plugin_id}/install")
+def uninstall_plugin(
+    plugin_id: str,
+    user_id: str = Depends(require_user_id),
+    sb=Depends(get_supabase),
+) -> dict:
+    """설치 제거(soft) — status=removed. 이력 보존(감사 추적). 미소유여도 회사 스코프로 no-op."""
+    company_id = _company_id_for_user(sb, user_id)
+    if company_id is None:
+        raise HTTPException(403, "no company for user (profiles.company_id null)")
+    (
+        sb.table("plugin_installs")
+        .update({"status": "removed"})
+        .eq("company_id", company_id)
+        .eq("plugin_id", plugin_id)
+        .execute()
+    )
+    logger.info("plugin uninstalled: company=%s plugin=%s by user=%s",
+                company_id, plugin_id, user_id)
+    return {"ok": True, "plugin_id": plugin_id, "status": "removed"}
